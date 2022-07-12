@@ -1,5 +1,5 @@
 = TaipeiTripPlanner
-
+TaipeiTripPlanner helps you plan trips in the Taipei Metro system.
 
 == Installation
 
