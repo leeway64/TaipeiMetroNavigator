@@ -1,5 +1,8 @@
 = TaipeiTripPlanner
+
 TaipeiTripPlanner helps you plan trips in the Taipei Metro system.
+
+To read this README in 中文, click link:doc/README[here].
 
 == Installation
 

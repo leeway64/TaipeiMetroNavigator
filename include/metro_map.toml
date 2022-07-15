@@ -1,0 +1,10 @@
+[stations]
+台北車站 = []
+
+[lines]
+brown = []
+red = []
+green = []
+orange = []
+blue = []
+yellow = []
