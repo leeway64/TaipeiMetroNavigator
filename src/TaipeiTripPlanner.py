@@ -1,8 +1,10 @@
+import toml
 
 
 if __name__ == "__main__":
-    print()
+    usersettings = toml.load("../include/metro_map.toml")
+    print(usersettings)
+
     # serialize user input into capn proto
     # deserialize user input
-    # Read map from toml file
     # find shortest path, etc
