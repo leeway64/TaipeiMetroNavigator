@@ -2,10 +2,32 @@
 
 TaipeiTripPlanner helps you plan trips in the Taipei Metro system.
 
-To read this README in 中文, click link:doc/README[here].
+To read this README in 中文, click link:doc/README.asciidoc[here].
 
 == Installation
 
+```shell
+
+```
+
 == Usage
 
+User input is entered into usersettings.toml.
+
+```toml
+
+```
+
+
+```
+
+```
+
 == Third-party tools
+
+- https://capnproto.org/index.html[Cap'n Proto] (MIT License): A serialization format similar to JSON, but in
+  binary.
+
+- https://github.com/uiri/toml[toml] (MIT License): Python library for parsing TOML files.
+
+- https://docs.pytest.org/en/6.2.x/index.html[pytest] (MIT License): Python unit testing library.

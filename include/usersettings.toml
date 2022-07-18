@@ -1,5 +1,5 @@
 [usersettings]
 source = "a"
 destination = "b"
-lines_to_print = ["red"]
+lines_to_print = ["red", "blue"]
 print_stats = true
