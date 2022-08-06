@@ -1,13 +1,11 @@
 import capnp
 import toml
-import pprint
 
 
 if __name__ == "__main__":
     usersettings_schema = capnp.load(r'../include/usersettings.schema.capnp')
     usersettings_toml = toml.load(r"../include/usersettings.toml")
 
-    # pprint.pprint(usersettings_toml["usersettings"]["destination"])
     serialized_usersettings = usersettings_schema.Usersettings.new_message()
 
     serialized_usersettings.source = usersettings_toml["usersettings"]["source"]
@@ -25,5 +23,5 @@ if __name__ == "__main__":
     with open('serialized_usersettings.bin', 'w+b') as file:
         serialized_usersettings.write(file)
 
-    print("hello world")
+    print("User settings have been serialized successfully into a Cap'n Proto binary file")
 
