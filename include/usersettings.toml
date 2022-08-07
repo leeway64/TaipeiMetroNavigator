@@ -1,5 +1,5 @@
 [usersettings]
-source = "a"
-destination = "b"
+source = "i"
+destination = "m"
 lines_to_print = ["red", "blue"]
 print_stats = true
