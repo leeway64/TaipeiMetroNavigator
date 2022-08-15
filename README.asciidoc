@@ -4,6 +4,7 @@ TaipeiTripPlanner helps you plan trips in the Taipei Metro system.
 
 To read this README in 中文, click link:doc/README.asciidoc[here].
 
+
 == Installation
 
 ```shell
@@ -12,7 +13,17 @@ To read this README in 中文, click link:doc/README.asciidoc[here].
 
 == Usage
 
-User input is entered into usersettings.toml.
+All stations referenced in this example, and all stations available in TaipeiTripPlanner, are based
+on the official Taipei Metro map.
+
+
+
+
+Check out the Taipei Metro map at the
+https://web.metro.taipei/img/all/metrotaipeimap.jpg[official Taipei MRT website source].
+
+
+To start with, all user input is entered into usersettings.toml.
 
 ```toml
 

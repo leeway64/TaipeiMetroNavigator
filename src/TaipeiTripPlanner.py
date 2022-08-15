@@ -1,7 +1,8 @@
 import toml
 import capnp
 
-import TaipeiTripPlanner_functions
+import graph_algorithms
+import utilities
 
 
 if __name__ == "__main__":
@@ -26,7 +27,12 @@ if __name__ == "__main__":
 
 
     print(f"Shortest route between {src} and {dest} stations:")
-    print(TaipeiTripPlanner_functions.find_shortest_path(metro_map["stations"], src, dest))
+    shortest_path_and_dist = graph_algorithms.find_shortest_path(metro_map["stations"], src, dest)
+    shortest_path = shortest_path_and_dist["shortest_path"]
+    distance = shortest_path_and_dist["distance"]
+
+    print(utilities.get_formatted_path(shortest_path))
+    print(distance)
 
 
     if print_stats:
@@ -34,4 +40,4 @@ if __name__ == "__main__":
 
 
     for line in lines_to_print:
-        print(metro_map["lines"][line])
+        print(f"{line} line:\n\t{metro_map['lines'][line]}")
