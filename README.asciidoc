@@ -6,38 +6,57 @@ To read this README in 中文, click link:doc/README.asciidoc[here].
 
 
 == Installation
-
-```shell
-
-```
-
-== Usage
+[source, shell]
+----
+git clone https://github.com/leeway64/TaipeiTripPlanner.git
+----
 
 All stations referenced in this example, and all stations available in TaipeiTripPlanner, are based
 on the official Taipei Metro map.
 
-
-
+image::[Taipei Metro Map]
 
 Check out the Taipei Metro map at the
 https://web.metro.taipei/img/all/metrotaipeimap.jpg[official Taipei MRT website source].
 
+== Usage
+To start with, all user input is entered into a link:include/usersettings.toml[TOML file].
 
-To start with, all user input is entered into usersettings.toml.
+[source, toml]
+----
+[usersettings]
+source = "Taipei 101"
+destination = "Taipei Main Station"
+lines_to_print = ["red", "blue"]
+print_stats = true
+----
 
-```toml
 
-```
+[source, shell]
+----
+sudo docker build
+sudo docker run
+----
 
 
-```
+If you wish to stop the Docker container, run:
 
-```
+[source, shell]
+----
+sudo docker
+----
+
+Finally, if you wish to remove the Docker container, run:
+
+[source, shell]
+----
+sudo docker
+----
+
 
 == Third-party tools
 
-- https://capnproto.org/index.html[Cap'n Proto] (MIT License): A serialization format similar to JSON, but in
-  binary.
+- https://github.com/capnproto/pycapnp[pycapnp] (BSD-2-Clause License): Python bindings for Cap'n Proto.
 
 - https://github.com/uiri/toml[toml] (MIT License): Python library for parsing TOML files.
 

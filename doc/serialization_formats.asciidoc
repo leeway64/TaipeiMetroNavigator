@@ -1,2 +1,41 @@
-= Serialization Formats
+= Serialization Formats Primer
+== Introduction
+This document serves as an introduction into serialization formats. In particular, this page will
+focus on Cap'n Proto.
 
+== Terminology
+To start with, https://en.wikipedia.org/wiki/Serialization[serialization] is the process of
+converting a data structure into a format that can be more easily stored and/or transmitted. In
+some cases, serialization is also known as marshalling.
+
+Serialization's main purpose is to https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/serialization/[
+"save the state of an object in order to be able to recreate it
+when needed"].
+
+Generally, serialization formats are split into two categories: schema and schema-less.
+
+For example, https://www.json.org/json-en.html[JSON], https://toml.io/en/[TOML], and
+https://yaml.org/[YAML] are schema-less, or self-describing, serialization formats. This means that
+data does not need to conform to a special format (AKA schema).
+
+Meanwhile, serialization formats like https://capnproto.org/[Cap'n Proto], a serialization format
+similar to JSON, but in binary, do require a https://capnproto.org/language.html[schema].
+
+Another classification of serialization format is human-readable vs. non-human-readable. JSON,
+TOML, and YAML are all human-readable, but Cap'n Proto is not, due to it being in binary. A format
+can be schema-less but not human-readable; consider https://ubjson.org/[UBJSON],
+https://cbor.io/[CBOR], https://bsonspec.org/[BSON], and https://msgpack.org/[MessagePack], which
+are all in binary.
+
+
+== Cap'n Proto
+In TaipeiMetroPlanner, Cap'n Proto is used to serialize user settings.
+
+
+== Further Reading
+The following links provide additional information that I found interesting or helpful in
+understanding serialization formats.
+
+* https://blog.mbedded.ninja/programming/serialization-formats/a-comparison-of-serialization-formats/[A Comparison Of Serialization Formats]
+
+* https://en.wikipedia.org/wiki/Comparison_of_data-serialization_formats[Comparison of data-serialization formats]
