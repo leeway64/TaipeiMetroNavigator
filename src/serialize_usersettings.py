@@ -24,4 +24,3 @@ if __name__ == "__main__":
         serialized_usersettings.write(file)
 
     print("User settings have been serialized successfully into a Cap'n Proto binary file")
-

@@ -1,7 +1,10 @@
 = Serialization Formats Primer
+
+
 == Introduction
 This document serves as an introduction into serialization formats. In particular, this page will
 focus on Cap'n Proto.
+
 
 == Terminology
 To start with, https://en.wikipedia.org/wiki/Serialization[serialization] is the process of
@@ -29,7 +32,84 @@ are all in binary.
 
 
 == Cap'n Proto
+https://capnproto.org/[Cap'n Proto] is a serialization format that is similar to
+https://developers.google.com/protocol-buffers/[Protocol Buffers], but faster in certain scenarios.
+
+Like https://google.github.io/flatbuffers/[FlatBuffers] and
+https://en.wikipedia.org/wiki/Financial_Information_eXchange#Simple_Binary_Encoding_(SBE)[SBE], Cap'n
+Proto is also considered to be https://capnproto.org/news/2014-06-17-capnproto-flatbuffers-sbe.html["zero-copy"],
+which means that there is no encoding and decoding step; once the Cap'n Proto
+https://capnproto.org/[binary message structure] is built, it can be used immediately without a decoding step.
+
+However, unlike
+
+Cap'n Proto messages require a https://capnproto.org/language.html[schema], so they are "strongly
+typed and not self-describing"; the structure of messages must be defined in the Cap'n Proto
+schema language.
+
+=== Example
 In TaipeiMetroPlanner, Cap'n Proto is used to serialize user settings.
+
+Consider link:../src/serialize_usersettings.py[serialize_usersettings.py] for an example of
+serialization.
+
+[source, python]
+----
+import capnp
+import toml
+
+
+if __name__ == "__main__":
+    usersettings_schema = capnp.load(r'../include/usersettings.schema.capnp')
+    usersettings_toml = toml.load(r"../include/usersettings.toml")
+
+    serialized_usersettings = usersettings_schema.Usersettings.new_message()
+
+    serialized_usersettings.source = usersettings_toml["usersettings"]["source"]
+    serialized_usersettings.destination = usersettings_toml["usersettings"]["destination"]
+
+    number_of_lines = len(usersettings_toml["usersettings"]["lines_to_print"])
+
+    linesToPrint = serialized_usersettings.init('linesToPrint', number_of_lines)
+
+    for i in range(number_of_lines):
+        linesToPrint[i] = usersettings_toml["usersettings"]["lines_to_print"][i]
+
+    serialized_usersettings.printStats = usersettings_toml["usersettings"]["print_stats"]
+
+    with open('serialized_usersettings.bin', 'w+b') as file:
+        serialized_usersettings.write(file)
+
+    print("User settings have been serialized successfully into a Cap'n Proto binary file")
+----
+
+Notice how the resulting Cap'n Proto file is a binary file.
+
+
+Next, consider the first several lines of link:../src/TaipeiTripPlanner.py[TaipeiTripPlanner.py]
+for a deserialization example.
+
+[source, python]
+----
+import toml
+import capnp
+
+
+if __name__ == "__main__":
+    usersettings_schema = capnp.load(r'../include/usersettings.schema.capnp')
+    metro_map = toml.load("../include/metro_map.toml")
+
+
+    # Get user settings from Cap'n Proto binary file
+    with open('serialized_usersettings.bin', 'rb') as file:
+        usersettings = usersettings_schema.Usersettings.read(file)
+
+    src = usersettings.source
+    dest = usersettings.destination
+
+    lines_to_print = usersettings.linesToPrint
+    print_stats = usersettings.printStats
+----
 
 
 == Further Reading
@@ -39,3 +119,5 @@ understanding serialization formats.
 * https://blog.mbedded.ninja/programming/serialization-formats/a-comparison-of-serialization-formats/[A Comparison Of Serialization Formats]
 
 * https://en.wikipedia.org/wiki/Comparison_of_data-serialization_formats[Comparison of data-serialization formats]
+
+* https://capnproto.org/news/2014-06-17-capnproto-flatbuffers-sbe.html[Comparison of Protobuf, Cap'n Proto, SBE, and FlatBuffers]
