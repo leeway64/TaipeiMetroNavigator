@@ -4,20 +4,18 @@ TaipeiTripPlanner helps you plan trips in the Taipei Metro system.
 
 To read this README in 中文, click link:doc/README.asciidoc[here].
 
+All stations available in TaipeiTripPlanner are based on the official Taipei Metro map.
+
+image::link:doc/taipei-metro-map.jpg[Taipei Metro Map]
+
+Check out the Taipei Metro map at the
+https://web.metro.taipei/img/all/metrotaipeimap.jpg[official Taipei MRT website source].
 
 == Installation
 [source, shell]
 ----
 git clone https://github.com/leeway64/TaipeiTripPlanner.git
 ----
-
-All stations referenced in this example, and all stations available in TaipeiTripPlanner, are based
-on the official Taipei Metro map.
-
-image::[Taipei Metro Map]
-
-Check out the Taipei Metro map at the
-https://web.metro.taipei/img/all/metrotaipeimap.jpg[official Taipei MRT website source].
 
 == Usage
 To start with, all user input is entered into a link:include/usersettings.toml[TOML file].
