@@ -28,20 +28,24 @@ Another classification of serialization format is human-readable vs. non-human-r
 TOML, and YAML are all human-readable, but Cap'n Proto is not, due to it being in binary. A format
 can be schema-less but not human-readable; consider https://ubjson.org/[UBJSON],
 https://cbor.io/[CBOR], https://bsonspec.org/[BSON], and https://msgpack.org/[MessagePack], which
-are all in binary.
+are all in binary but do not require a schema.
 
 
 == Cap'n Proto
 https://capnproto.org/[Cap'n Proto] is a serialization format that is similar to
-https://developers.google.com/protocol-buffers/[Protocol Buffers], but faster in certain scenarios.
+https://developers.google.com/protocol-buffers/[Protocol Buffers (Protobufs)], but faster in certain scenarios.
 
 Like https://google.github.io/flatbuffers/[FlatBuffers] and
-https://en.wikipedia.org/wiki/Financial_Information_eXchange#Simple_Binary_Encoding_(SBE)[SBE], Cap'n
+https://www.fixtrading.org/standards/sbe/[SBE (Simple Binary Encoding)], Cap'n
 Proto is also considered to be https://capnproto.org/news/2014-06-17-capnproto-flatbuffers-sbe.html["zero-copy"],
 which means that there is no encoding and decoding step; once the Cap'n Proto
 https://capnproto.org/[binary message structure] is built, it can be used immediately without a decoding step.
 
-However, unlike
+However, unlike Protobufs and SBE, Cap'n Proto and Flatbuffers allow for
+https://capnproto.org/news/2014-06-17-capnproto-flatbuffers-sbe.html[random-access reads]. A
+serialization format with random-access reads allows the user to scan through the contents of the
+message in an arbitrary order, and it also allows the user to read one specific field without
+brining in the entire message into memory.
 
 Cap'n Proto messages require a https://capnproto.org/language.html[schema], so they are "strongly
 typed and not self-describing"; the structure of messages must be defined in the Cap'n Proto
@@ -116,8 +120,11 @@ if __name__ == "__main__":
 The following links provide additional information that I found interesting or helpful in
 understanding serialization formats.
 
-* https://blog.mbedded.ninja/programming/serialization-formats/a-comparison-of-serialization-formats/[A Comparison Of Serialization Formats]
-
 * https://en.wikipedia.org/wiki/Comparison_of_data-serialization_formats[Comparison of data-serialization formats]
+(from Wikipedia)
 
 * https://capnproto.org/news/2014-06-17-capnproto-flatbuffers-sbe.html[Comparison of Protobuf, Cap'n Proto, SBE, and FlatBuffers]
+(from Cap'n Proto)
+
+* https://blog.mbedded.ninja/programming/serialization-formats/a-comparison-of-serialization-formats/[A Comparison Of Serialization Formats]
+(from mbedded.ninja)
