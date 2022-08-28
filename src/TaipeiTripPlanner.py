@@ -34,9 +34,11 @@ if __name__ == "__main__":
     print(utilities.get_formatted_path(shortest_path))
     print(distance)
 
+    print(next(iter(metro_map["lines"].values())))
+    print(metro_map["lines"])
 
     if print_stats:
-        pass
+        print(utilities.get_metro_statistics(metro_map["lines"]))
 
 
     for line in lines_to_print:

@@ -20,23 +20,31 @@ def print_formatted_path(formatted_path):
 
 
 def get_metro_statistics(lines):
+    """
+    :param lines:
+    :return:
+    """
     stats = dict()
     stats["total_number_of_lines"] = len(lines)
     stats["total_number_of_stations"] = find_total_number_of_stations(lines)
+    stats["longest_line"] = find_shortest_longest_lines(lines)["longest_line"]
+    stats["shortest_line"] = find_shortest_longest_lines(lines)["shortest_line"]
     return stats
 
 
-def find_min_max_line_lengths(lines):
-    max_length = 0
-    # min_length =
-    for line, stations in lines:
+def find_shortest_longest_lines(lines):
+    longest_line, shortest_line = {"name": None, "length": 0}, {"name": None, "length": 0}
+    # shortest_line  # TODO
+    for line, stations in lines.items():
         number_of_stations = len(stations)
-        if number_of_stations > max_length:
-            max_length = number_of_stations
+        if number_of_stations > longest_line["length"]:
+            longest_line["name"] = line
+            longest_line["length"] = number_of_stations
+    return {"longest_line": longest_line, "shortest_line": shortest_line}  # Return a dictionary directly
 
 
 def find_total_number_of_stations(lines):
     total = 0
-    for line, stations in lines:
+    for line, stations in lines.items():
         total += len(stations)
     return total

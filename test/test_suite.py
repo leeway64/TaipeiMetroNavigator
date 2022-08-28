@@ -12,3 +12,6 @@ class TestSuite:
         assert utilities.get_formatted_path(["Zhongshan", "Taipei Main Station"]) == "Zhongshan === Taipei Main Station"
         assert utilities.get_formatted_path(["Chiang Kai-Shek Memorial Hall", "Taipei Main Station", "Shandao Temple"]) == "Chiang Kai-Shek Memorial Hall === Taipei Main Station === Shandao Temple"
 
+    def test_get_metro_statistics(self):
+        assert 1
+
