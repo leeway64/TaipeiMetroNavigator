@@ -1,3 +1,5 @@
+import json
+
 import toml
 import capnp
 
@@ -6,6 +8,8 @@ import utilities
 
 
 if __name__ == "__main__":
+    print("TaipeiMetroPlanner: A trip planner for the Taipei Metro system")
+
     usersettings_schema = capnp.load(r'../include/usersettings.schema.capnp')
     metro_map = toml.load("../include/metro_map.toml")
 
@@ -20,26 +24,21 @@ if __name__ == "__main__":
     lines_to_print = usersettings.linesToPrint
     print_stats = usersettings.printStats
 
-    print(src)
-    print(dest)
-    print(lines_to_print)
-    print(print_stats)
-
 
     print(f"Shortest route between {src} and {dest} stations:")
     shortest_path_and_dist = graph_algorithms.find_shortest_path(metro_map["stations"], src, dest)
     shortest_path = shortest_path_and_dist["shortest_path"]
     distance = shortest_path_and_dist["distance"]
 
-    print(utilities.get_formatted_path(shortest_path))
-    print(distance)
-
-    print(next(iter(metro_map["lines"].values())))
-    print(metro_map["lines"])
+    print(f"\t{utilities.get_formatted_path(shortest_path)}")
+    print(f"\t{dest} is {str(distance + 1)} stations away from {src}\n")
 
     if print_stats:
-        print(utilities.get_metro_statistics(metro_map["lines"]))
+        print("Taipei Metro statistics and information:")
+        json_statistics = utilities.get_metro_statistics(metro_map["lines"])
+        print(json.dumps(json_statistics, indent=4))  # Pretty print the statistics
 
-
-    for line in lines_to_print:
-        print(f"{line} line:\n\t{metro_map['lines'][line]}")
+    if lines_to_print:
+        print("\tAdditional line information")
+        for line in lines_to_print:
+            print(f"\t\t{line} line:\n\t\t\t{metro_map['lines'][line]}")

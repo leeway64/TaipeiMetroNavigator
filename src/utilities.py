@@ -33,13 +33,15 @@ def get_metro_statistics(lines):
 
 
 def find_shortest_longest_lines(lines):
-    longest_line, shortest_line = {"name": None, "length": 0}, {"name": None, "length": 0}
-    # shortest_line  # TODO
+    longest_line, shortest_line = {"name": next(iter(lines.keys())), "length": len(next(iter(lines.values())))}, {"name": next(iter(lines.keys())), "length": len(next(iter(lines.values())))}
     for line, stations in lines.items():
         number_of_stations = len(stations)
         if number_of_stations > longest_line["length"]:
             longest_line["name"] = line
             longest_line["length"] = number_of_stations
+        if number_of_stations < shortest_line["length"]:
+            shortest_line["name"] = line
+            shortest_line["length"] = number_of_stations
     return {"longest_line": longest_line, "shortest_line": shortest_line}  # Return a dictionary directly
 
 
