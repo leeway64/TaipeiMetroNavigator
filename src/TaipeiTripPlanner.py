@@ -8,7 +8,7 @@ import utilities
 
 
 if __name__ == "__main__":
-    print("TaipeiMetroPlanner: A trip planner for the Taipei Metro system")
+    print("TaipeiMetroPlanner: A trip planner for the Taipei Metro system\n")
 
     usersettings_schema = capnp.load(r'../include/usersettings.schema.capnp')
     metro_map = toml.load("../include/metro_map.toml")
@@ -31,12 +31,12 @@ if __name__ == "__main__":
     distance = shortest_path_and_dist["distance"]
 
     print(f"\t{utilities.get_formatted_path(shortest_path)}")
-    print(f"\t{dest} is {str(distance + 1)} stations away from {src}\n")
+    print(f"\t{dest} station is {str(distance + 1)} stations away from {src} stations\n")
 
     if print_stats:
         print("Taipei Metro statistics and information:")
         json_statistics = utilities.get_metro_statistics(metro_map["lines"])
-        print(json.dumps(json_statistics, indent=4))  # Pretty print the statistics
+        print(json.dumps(json_statistics, indent=4))  # Pretty print the statistics as a JSON object
 
     if lines_to_print:
         print("\tAdditional line information")

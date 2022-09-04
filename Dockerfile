@@ -1,4 +1,5 @@
-FROM archlinux AS arch
+# Create the Python virtual environment and install the requirements
+FROM archlinux AS install
 
 WORKDIR /usr
 
@@ -7,6 +8,10 @@ COPY . ./
 
 RUN pacman -Syu --noconfirm
 
+RUN pip install -r requirements.txt
+
+
+# Run TaipeiMetroPlanner
 FROM python AS exe
 
 # Set the shell script to be an executable

@@ -10,7 +10,6 @@ def find_shortest_path(graph, src, dest):
     while current_node:
         current, distance = current_node.pop()
         current_path = shortest_path.pop(0)
-        # print(f"current_shortest_path: {current_path}")
 
         if current == dest:
             return {"shortest_path": current_path, "distance": distance}
