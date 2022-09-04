@@ -3,8 +3,8 @@ import toml
 
 
 if __name__ == "__main__":
-    usersettings_schema = capnp.load(r'../include/usersettings.schema.capnp')
-    usersettings_toml = toml.load(r"../include/usersettings.toml")
+    usersettings_schema = capnp.load(r'include/usersettings.schema.capnp')
+    usersettings_toml = toml.load(r"include/usersettings.toml")
 
     serialized_usersettings = usersettings_schema.Usersettings.new_message()
 
