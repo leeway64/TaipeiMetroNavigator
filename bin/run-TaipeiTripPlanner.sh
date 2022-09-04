@@ -1,3 +1,5 @@
-python serialize_usersettings.py
+# Run the 2 primary Python scripts
 
-python TaipeiTripPlanner.py
+python ../src/serialize_usersettings.py
+
+python ../src/TaipeiTripPlanner.py
