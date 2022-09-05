@@ -32,8 +32,8 @@ print_stats = true
 
 [source, shell]
 ----
-sudo docker build
-sudo docker run
+sudo docker build -t taipeitripplanner .
+sudo docker run taipeitripplanner
 ----
 
 
