@@ -10,8 +10,8 @@ import utilities
 if __name__ == "__main__":
     print("TaipeiMetroPlanner: A trip planner for the Taipei Metro system\n")
 
-    usersettings_schema = capnp.load(r'include/usersettings.schema.capnp')
-    metro_map = toml.load("include/metro_map.toml")
+    usersettings_schema = capnp.load(r'usersettings.schema.capnp')
+    metro_map = toml.load("metro_map.toml")
 
 
     # Get user settings from Cap'n Proto binary file

@@ -1,34 +1,39 @@
 # Multi-stage builds
 
 
-FROM archlinux AS install
+FROM ubuntu AS install
+
+# Set working directory to /usr/local
+WORKDIR /usr/local
+
+# Copy all necessary files in current local directory to the working directory.
+# COPY doesn't copy the folders themselves, only the contents of the folders.
+COPY bin/ include/ src/ requirements.txt ./
+
+
+FROM archlinux AS exe
+
+# Change the shell from sh to bash
+SHELL ["/bin/bash", "-c"]
 
 # Set working directory to /usr
 WORKDIR /usr
 
-# Copy all files in current local directory to the working directory
-COPY . ./
+# Copy the contents of the working directory of the install base to the working directory of the
+# exe base
+COPY --from=install /usr/local ./
 
 # Create the Python virtual environment and install the requirements
-RUN pacman -Syu --noconfirm python3
-RUN pacman -Syu --noconfirm python-pip
+RUN pacman -Sy --noconfirm python3
+RUN pacman -Sy --noconfirm python-pip
 
 RUN python3 -m venv .venv
 RUN source .venv/bin/activate
 RUN pip install -r requirements.txt
 
-
-FROM python AS exe
-
-# Set working directory to /usr/local
-WORKDIR /usr/local
-
-# Copy the working directory of the install base to the working directory of the exe base
-COPY --from=install /usr/ ./
-
 # Set the shell script to be an executable
-RUN chmod +x bin/run-TaipeiTripPlanner.sh
+RUN chmod +x ./run-TaipeiTripPlanner.sh
 
-# Run TaipeiMetroPlanner
-CMD ["./bin/run-TaipeiTripPlanner"]
+# Run TaipeiTripPlanner
+CMD ./run-TaipeiTripPlanner.sh
 
