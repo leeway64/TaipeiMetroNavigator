@@ -90,7 +90,7 @@ if __name__ == "__main__":
 Notice how the resulting Cap'n Proto file is a binary file.
 
 
-Next, consider the first several lines of link:../src/TaipeiTripPlanner.py[TaipeiTripPlanner.py]
+Next, consider the first several lines of link:../src/TaipeiMetroNavigator.py[TaipeiTripPlanner.py]
 for a deserialization example.
 
 [source, python]

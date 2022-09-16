@@ -32,8 +32,8 @@ RUN source .venv/bin/activate
 RUN pip install -r requirements.txt
 
 # Set the shell script to be an executable
-RUN chmod +x ./run-TaipeiTripPlanner.sh
+RUN chmod +x ./run-TaipeiMetroNavigator.sh
 
 # Run TaipeiTripPlanner
-CMD ./run-TaipeiTripPlanner.sh
+CMD ./run-TaipeiMetroNavigator.sh
 

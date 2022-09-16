@@ -1,10 +1,10 @@
-= TaipeiTripPlanner
+= TaipeiMetroNavigator
 
-TaipeiTripPlanner helps you plan trips in the Taipei Metro system.
+TaipeiMetroNavigator helps you plan trips in the Taipei Metro system.
 
 To read this README in 中文, click link:doc/README.asciidoc[here].
 
-All stations available in TaipeiTripPlanner are based on the official Taipei Metro map.
+All stations available in TaipeiMetroNavigator are based on the official Taipei Metro map.
 
 image::doc/taipei-metro-map.jpg[Taipei Metro Map]
 
@@ -14,7 +14,7 @@ https://web.metro.taipei/img/all/metrotaipeimap.jpg[official Taipei MRT website 
 == Installation
 [source, shell]
 ----
-git clone https://github.com/leeway64/TaipeiTripPlanner.git
+git clone https://github.com/leeway64/TaipeiMetroNavigator.git
 ----
 
 == Usage
@@ -32,8 +32,8 @@ print_stats = true
 
 [source, shell]
 ----
-sudo docker build -t taipeitripplanner .
-sudo docker run taipeitripplanner
+sudo docker build -t taipeimetronavigator .
+sudo docker run taipeimetronavigator
 ----
 
 
