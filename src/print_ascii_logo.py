@@ -23,6 +23,8 @@ if __name__ == "__main__":
              |_|                                                         |___/    
     """
 
+    # I need to add a comma after the item if I want to create a tuple of just one item
+    bot_row_count1 = (50,)
 
     for _ in range(top_count1.count1):
         print("=", end='')
@@ -31,5 +33,12 @@ if __name__ == "__main__":
         for _ in range(value):
             print("=", end='')
 
-
     print(ascii_logo)
+
+    try:
+        # Tuples are immutable. A TypeError is thrown if a tuple is trying to be changed.
+        bot_row_count1[0] = 64
+    except TypeError:
+        for item in bot_row_count1:
+            for _ in range(item):
+                print("=", end='')
