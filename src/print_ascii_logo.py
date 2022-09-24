@@ -1,4 +1,7 @@
 import collections
+import time
+
+from lib import ListNode
 
 
 if __name__ == "__main__":
@@ -42,3 +45,12 @@ if __name__ == "__main__":
         for item in bot_row_count1:
             for _ in range(item):
                 print("=", end='')
+
+
+    declaration_of_independence = time.strptime("04/07/1776", "%d/%m/%Y")
+    apollo_11 = time.strptime("16/07/1969", "%d/%m/%Y")
+    if apollo_11 > declaration_of_independence:
+        node1 = ListNode.ListNode(27)
+        node1.next = ListNode.ListNode(23)
+        for _ in range(node1.value + node1.next.value):
+            print("=", end='')
