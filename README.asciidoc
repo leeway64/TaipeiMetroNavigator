@@ -52,6 +52,14 @@ sudo docker
 ----
 
 
+== Running unit tests
+
+[source, shell]
+----
+pytest --verbose --color=yes --full-trace
+----
+
+
 == Third-party tools
 
 - https://github.com/capnproto/pycapnp[pycapnp] (BSD-2-Clause License): Python bindings for Cap'n Proto.

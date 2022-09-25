@@ -2,6 +2,7 @@ import collections
 import time
 
 from lib import ListNode
+import utilities
 
 
 if __name__ == "__main__":
@@ -54,3 +55,11 @@ if __name__ == "__main__":
         node1.next = ListNode.ListNode(23)
         for _ in range(node1.value + node1.next.value):
             print("=", end='')
+        print()
+
+
+    description_dict = {"TaipeiMetroNavigator:": {"A": {"trip": {"planner": {"for": {"the": {"Taipei": {"Metro": {"System": None}}}}}}}}}
+
+    flattened_dict = utilities.flatten_dict(description_dict)
+    message = list(flattened_dict.keys())[0]
+    print(message.replace("_", " "))
