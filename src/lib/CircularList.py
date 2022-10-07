@@ -4,10 +4,10 @@ class CircularList:
     def __init__(self, l=[]):
         self.list = l
     
-    def rotate_anti_clockwise(self):
+    def rotate_clockwise(self):
         self.list.insert(0, self.list.pop(-1))
 
-    def rotate_clockwise(self):
+    def rotate_anti_clockwise(self):
         self.list.append(self.list.pop(0))
     
     def __iter__(self):
@@ -22,3 +22,6 @@ class CircularList:
 
     def __str__(self):
         return str(self.list)
+
+    def __len__(self):
+        return len(self.list)
