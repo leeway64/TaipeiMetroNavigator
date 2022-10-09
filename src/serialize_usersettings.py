@@ -36,3 +36,4 @@ if __name__ == "__main__":
             for _ in range(len(success_message)):
                 print(f"{success_message[0]} ", end="")
                 success_message.rotate_anti_clockwise()
+    print()

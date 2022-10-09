@@ -35,5 +35,5 @@ RUN pip install -r requirements.txt
 RUN chmod +x ./run-TaipeiMetroNavigator.sh
 
 # Run TaipeiTripPlanner
-CMD ./run-TaipeiMetroNavigator.sh
+CMD python print_ascii_logo.py && ./run-TaipeiMetroNavigator.sh
 

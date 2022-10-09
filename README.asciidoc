@@ -37,6 +37,17 @@ sudo docker run taipeimetronavigator
 ----
 
 
+To list the containers and images, run:
+
+[source, shell]
+----
+sudo docker image ls
+sudo docker container ls -a
+----
+
+`+docker container ls -a+` shows the stopped __and__ running containers.
+
+
 If you wish to stop the Docker container, run:
 
 [source, shell]
@@ -44,11 +55,13 @@ If you wish to stop the Docker container, run:
 sudo docker
 ----
 
-Finally, if you wish to remove the Docker container, run:
+
+Finally, if you wish to remove all containers and images, run:
 
 [source, shell]
 ----
-sudo docker
+sudo docker container prune -f
+sudo docker image prune -f
 ----
 
 

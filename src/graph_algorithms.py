@@ -1,7 +1,12 @@
 from collections import deque
+from typing import List, Dict
+
+from pyinline import inline
 
 
-def find_shortest_path(graph, src, dest):
+# The @inline decorator turns find_shortest_path into an inline function
+@inline
+def find_shortest_path(graph: Dict[str, List[str]], src: str, dest: str):  # Type-hinting
     visited = set(src)
     shortest_path = [[src]]
     # Use BFS

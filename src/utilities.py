@@ -1,4 +1,4 @@
-def get_formatted_path(path):
+def get_formatted_path(path) -> str:
     """
     :param path: A list
     :return:
