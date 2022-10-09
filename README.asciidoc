@@ -1,15 +1,18 @@
 = TaipeiMetroNavigator
 
-TaipeiMetroNavigator helps you plan trips in the Taipei Metro system.
+TaipeiMetroNavigator helps you plan trips in the Taipei Metro system!
 
 To read this README in 中文, click link:doc/README.asciidoc[here].
 
-All stations available in TaipeiMetroNavigator are based on the official Taipei Metro map.
+All stations available in TaipeiMetroNavigator are based on the official Taipei Metro map. The
+stations included in TaipeiMetroNavigator are the "main" stations in the MRT; that is, it does not
+include the line that goes to the airport.
 
 image::doc/taipei-metro-map.jpg[Taipei Metro Map]
 
 Check out the Taipei Metro map at the
-https://web.metro.taipei/img/all/metrotaipeimap.jpg[official Taipei MRT website source].
+https://web.metro.taipei/img/all/metrotaipeimap.jpg[official Taipei MRT website].
+
 
 == Installation
 [source, shell]
@@ -29,13 +32,15 @@ lines_to_print = ["red", "blue"]
 print_stats = true
 ----
 
-
+Next, build and run TaipeiMetroNavigator by executing the following two commands:
 [source, shell]
 ----
 sudo docker build -t taipeimetronavigator .
 sudo docker run taipeimetronavigator
 ----
 
+
+== Other useful Docker commands
 
 To list the containers and images, run:
 
@@ -48,15 +53,7 @@ sudo docker container ls -a
 `+docker container ls -a+` shows the stopped __and__ running containers.
 
 
-If you wish to stop the Docker container, run:
-
-[source, shell]
-----
-sudo docker
-----
-
-
-Finally, if you wish to remove all containers and images, run:
+If you wish to remove all containers and images, run:
 
 [source, shell]
 ----
