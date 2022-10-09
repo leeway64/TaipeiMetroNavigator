@@ -1,3 +1,5 @@
+import itertools
+
 # A list-like data structure that can be rotated clockwise or anti-clockwise
 # Influenced by Cracking the Coding Interview (6th Edition) problem 7.9
 class CircularList:
@@ -25,3 +27,10 @@ class CircularList:
 
     def __len__(self):
         return len(self.list)
+    
+    # Create an infinite loop based on self.list
+    def __call__(self):
+        return itertools.cycle(self.list)
+    
+    def __reversed__(self):
+        return reversed(self.list)

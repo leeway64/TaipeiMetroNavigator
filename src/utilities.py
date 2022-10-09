@@ -1,3 +1,6 @@
+import pandas as pd
+
+
 def get_formatted_path(path) -> str:
     """
     :param path: A list
