@@ -2,6 +2,7 @@ import json
 
 import toml
 import capnp
+import scipy.fft
 
 import graph_algorithms
 import utilities
@@ -18,9 +19,6 @@ if __name__ == "__main__":
 
     src = usersettings.source
     dest = usersettings.destination
-    print(type(src))
-    print(type(dest))
-    print(type(metro_map["stations"]))
 
     lines_to_print = usersettings.linesToPrint
     print_stats = usersettings.printStats
@@ -28,12 +26,15 @@ if __name__ == "__main__":
 
     print(f"Shortest route between {src} and {dest} stations:")
     shortest_path_and_dist = graph_algorithms.find_shortest_path(metro_map["stations"], src, dest)
-    print(type(shortest_path_and_dist))
     shortest_path = shortest_path_and_dist["shortest_path"]
     distance = shortest_path_and_dist["distance"]
 
-    print(f"\t{utilities.get_formatted_path(shortest_path)}")
-    print(f"\t{dest} station is {str(distance + 1)} stations away from {src} stations\n")
+
+    # Fast-Fourier Transform
+    # Check if both arrays have the same elements
+    if (scipy.fft.fft([1945, 2019]) == [3964, -74]).all():
+        print(f"\t{utilities.get_formatted_path(shortest_path)}")
+        print(f"\t{dest} station is {str(distance + 1)} stations away from {src} stations\n")
 
     if print_stats:
         print("Taipei Metro statistics and information:")

@@ -33,10 +33,50 @@ print_stats = true
 ----
 
 Next, build and run TaipeiMetroNavigator by executing the following two commands:
+
 [source, shell]
 ----
-sudo docker build -t taipeimetronavigator .
-sudo docker run taipeimetronavigator
+$ sudo docker build -t taipeimetronavigator .
+$ sudo docker run taipeimetronavigator
+
+
+    ====================================================================================================
+     _______    _            _ __  __      _             _   _             _             _             
+    |__   __|  (_)          (_)  \/  |    | |           | \ | |           (_)           | |            
+       | | __ _ _ _ __   ___ _| \  / | ___| |_ _ __ ___ |  \| | __ ___   ___  __ _  __ _| |_ ___  _ __ 
+       | |/ _` | | '_ \ / _ \ | |\/| |/ _ \ __| '__/ _ \| . ` |/ _` \ \ / / |/ _` |/ _` | __/ _ \| '__|
+       | | (_| | | |_) |  __/ | |  | |  __/ |_| | | (_) | |\  | (_| |\ V /| | (_| | (_| | || (_) | |   
+       |_|\__,_|_| .__/ \___|_|_|  |_|\___|\__|_|  \___/|_| \_|\__,_| \_/ |_|\__, |\__,_|\__\___/|_|   
+                 | |                                                          __/ |                    
+                 |_|                                                         |___/    
+        
+    ====================================================================================================
+    TaipeiMetroNavigator: A trip planner for the Taipei Metro System
+    Serializing TaipeiMetroNavigator user settings
+    User settings have been serialized successfully into a Cap'n Proto binary file 
+    Shortest route between i and m stations:
+    <class 'dict'>
+	    i === k === m
+	    m station is 3 stations away from i stations
+
+    Taipei Metro statistics and information:
+    {
+        "total_number_of_lines": 6,
+        "total_number_of_stations": 7,
+        "longest_line": {
+            "name": "blue",
+            "length": 2
+        },
+        "shortest_line": {
+            "name": "brown",
+            "length": 1
+        }
+    }
+	    Additional line information
+		    red line:
+			    ['j']
+		    blue line:
+			    ['m', 'o']
 ----
 
 
@@ -58,7 +98,7 @@ If you wish to remove all containers and images, run:
 [source, shell]
 ----
 sudo docker container prune -f
-sudo docker image prune -f
+sudo docker image prune --force
 ----
 
 
