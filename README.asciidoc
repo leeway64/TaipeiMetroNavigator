@@ -114,6 +114,15 @@ pytest --verbose --color=yes --full-trace
 
 - https://github.com/capnproto/pycapnp[pycapnp] (BSD-2-Clause License): Python bindings for Cap'n Proto.
 
+- https://www.docker.com/[Docker]: Application containerization.
+
 - https://github.com/uiri/toml[toml] (MIT License): Python library for parsing TOML files.
 
 - https://docs.pytest.org/en/6.2.x/index.html[pytest] (MIT License): Python unit testing library.
+
+- https://pypi.org/project/pyinline/[pyinline] (MIT License): Provides Python function inlining.
+
+- https://pypi.org/project/pandas/[pandas] (BSD-3-Clause): Python data structures helpful for data
+analysis.
+
+- https://github.com/scipy/scipy[scipy] (BSD-3-Clause): Python library for scientific computing.
