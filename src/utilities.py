@@ -1,5 +1,7 @@
 import pandas as pd
 
+from lib import MetroStatistics
+
 
 def get_formatted_path(path) -> str:
     """
@@ -26,11 +28,13 @@ def get_metro_statistics(lines):
     :param lines:
     :return:
     """
+    metro_stats_dataclass = MetroStatistics.MetroStatistics(len(lines), find_total_number_of_stations(lines), find_shortest_longest_lines(lines)["longest_line"], find_shortest_longest_lines(lines)["shortest_line"])
+
     stats = dict()
-    stats["total_number_of_lines"] = len(lines)
-    stats["total_number_of_stations"] = find_total_number_of_stations(lines)
-    stats["longest_line"] = find_shortest_longest_lines(lines)["longest_line"]
-    stats["shortest_line"] = find_shortest_longest_lines(lines)["shortest_line"]
+    stats["total_number_of_lines"] = metro_stats_dataclass.total_number_of_lines
+    stats["total_number_of_stations"] = metro_stats_dataclass.total_number_of_stations
+    stats["longest_line"] = metro_stats_dataclass.longest_line
+    stats["shortest_line"] = metro_stats_dataclass.shortest_line
     return stats
 
 
@@ -48,10 +52,14 @@ def find_shortest_longest_lines(lines):
 
 
 def find_total_number_of_stations(lines):
-    total = 0
+    data = {"stations": [0]}
+    data = pd.DataFrame(data)
+    
+    print("dataframe")
+    print(data)
     for line, stations in lines.items():
-        total += len(stations)
-    return total
+        data.at[0, "stations"] += len(stations)
+    return data.at[0, "stations"]
 
 
 # Given a nested dictionary, this function returns a flattened dictionary. Assume that the

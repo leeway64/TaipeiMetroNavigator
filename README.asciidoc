@@ -1,5 +1,10 @@
 = TaipeiMetroNavigator
 
+image::https://img.shields.io/badge/License-MIT-yellow.svg[MIT License]
+
+image:https://img.shields.io/github/v/release/leeway64/TaipeiMetroNavigator[GitHub release (latest by date)]
+
+
 TaipeiMetroNavigator helps you plan trips in the Taipei Metro system!
 
 To read this README in 中文, click link:doc/README.asciidoc[here].
