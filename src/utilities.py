@@ -55,11 +55,11 @@ def find_total_number_of_stations(lines):
     data = {"stations": [0]}
     data = pd.DataFrame(data)
     
-    print("dataframe")
-    print(data)
     for line, stations in lines.items():
         data.at[0, "stations"] += len(stations)
-    return data.at[0, "stations"]
+    print("dataframe")
+    print(data)
+    return int(data.at[0, "stations"])
 
 
 # Given a nested dictionary, this function returns a flattened dictionary. Assume that the
