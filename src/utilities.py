@@ -3,10 +3,13 @@ import pandas as pd
 from lib import MetroStatistics
 
 
-def get_formatted_path(path) -> str:
+def get_formatted_path(path) -> str:  # Type hinting
     """
-    :param path: A list
+    
+
+    :param path:
     :return:
+    :rtype: str
     """
     formatted_path = f"{path[0]}"
     for i in range(1, len(path)):
@@ -39,6 +42,11 @@ def get_metro_statistics(lines):
 
 
 def find_shortest_longest_lines(lines):
+    """
+
+    :param lines:
+    :return:
+    """
     longest_line, shortest_line = {"name": next(iter(lines.keys())), "length": len(next(iter(lines.values())))}, {"name": next(iter(lines.keys())), "length": len(next(iter(lines.values())))}
     for line, stations in lines.items():
         number_of_stations = len(stations)
@@ -52,6 +60,11 @@ def find_shortest_longest_lines(lines):
 
 
 def find_total_number_of_stations(lines):
+    """
+
+    :param lines:
+    :return:
+    """
     data = {"stations": [0]}
     data = pd.DataFrame(data)
     
@@ -76,6 +89,11 @@ def find_total_number_of_stations(lines):
 #  'c_b_y': 10,
 #  'd': [1, 2, 3]}
 def flatten_dict(dictionary):
+    """
+
+    :param dictionary:
+    :return:
+    """
     result_dict = dict()
     for key in dictionary:
         __explore_dict(dictionary[key], result_dict, key)
@@ -83,6 +101,13 @@ def flatten_dict(dictionary):
 
 
 def __explore_dict(dictionary, result_dict, name):
+    """
+
+    :param dictionary:
+    :param result_dict:
+    :param name:
+    :return:
+    """
     if type(dictionary) != dict:
         result_dict[name] = dictionary
     else:
