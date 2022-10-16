@@ -7,6 +7,10 @@ image:https://img.shields.io/github/v/release/leeway64/TaipeiMetroNavigator[GitH
 
 TaipeiMetroNavigator helps you plan trips in the Taipei Metro system!
 
+The Taipei Metro, also known as the
+https://english.dorts.gov.taipei/cp.aspx?n=2920A1D419A92E3D&s=97014AFF962241AA[MRT (Mass Rapid Transit)],
+is https://english.metro.taipei/Default.aspx[the metro system for Taipei City].
+
 To read this README in 中文, click link:doc/README.asciidoc[here].
 
 All stations available in TaipeiMetroNavigator are based on the official Taipei Metro map. The
@@ -17,6 +21,14 @@ image::doc/taipei-metro-map.jpg[Taipei Metro Map]
 
 Check out the Taipei Metro map at the
 https://web.metro.taipei/img/all/metrotaipeimap.jpg[official Taipei MRT website].
+
+
+== Architecture
+
+
+
+Notice that TaipeiMetroNavigator is completely Dockerized; all processes run inside a Docker
+container.
 
 
 == Installation

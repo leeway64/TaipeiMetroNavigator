@@ -5,10 +5,12 @@ from lib import MetroStatistics
 
 def get_formatted_path(path) -> str:  # Type hinting
     """
-    
+    Format the shortest path between 2 stations into a more easily readable form.
+    Insert "===" between station names.
 
-    :param path:
-    :return:
+    :param path: A list of station names, representing the shortest path between 2 stations
+    :type path: List
+    :return: The shortest path between 2 stations, formatted into "station1 === station2 === station3 === ..."
     :rtype: str
     """
     formatted_path = f"{path[0]}"
@@ -28,8 +30,13 @@ def print_formatted_path(formatted_path):
 
 def get_metro_statistics(lines):
     """
-    :param lines:
-    :return:
+    Compile several MRT statistics inside a single function.
+
+    :param lines: A dictionary holding the name of each line in the MRT as the keys and the
+    corresponding stations in a list as values for each key
+    :return: A dictionary where each key is the name of the statistic and each key's value is the
+    corresponding value for that statistic.
+    :rtype: Dict
     """
     metro_stats_dataclass = MetroStatistics.MetroStatistics(len(lines), find_total_number_of_stations(lines), find_shortest_longest_lines(lines)["longest_line"], find_shortest_longest_lines(lines)["shortest_line"])
 
@@ -43,9 +50,12 @@ def get_metro_statistics(lines):
 
 def find_shortest_longest_lines(lines):
     """
+    Find the shortest and longest lines in the MRT.
 
-    :param lines:
-    :return:
+    :param lines: A dictionary holding the name of each line in the MRT as the keys and the
+    corresponding stations in a list as values for each key
+    :return: A dictionary of the form {"longest_line": longest_line, "shortest_line": shortest_line}
+    :rtype: Dict
     """
     longest_line, shortest_line = {"name": next(iter(lines.keys())), "length": len(next(iter(lines.values())))}, {"name": next(iter(lines.keys())), "length": len(next(iter(lines.values())))}
     for line, stations in lines.items():
@@ -61,9 +71,11 @@ def find_shortest_longest_lines(lines):
 
 def find_total_number_of_stations(lines):
     """
-
-    :param lines:
-    :return:
+    :param lines: A dictionary holding the name of each line in the MRT as the keys and the
+    corresponding stations in a list as values for each key
+    :rtype lines: Dict[str, List[str]]
+    :return: The number of nodes/stations in the Taipei Metro
+    :rtype: int
     """
     data = {"stations": [0]}
     data = pd.DataFrame(data)
@@ -75,24 +87,26 @@ def find_total_number_of_stations(lines):
     return int(data.at[0, "stations"])
 
 
-# Given a nested dictionary, this function returns a flattened dictionary. Assume that the
-# keys will always be strings, but the values can be anything (ints, lists, etc.). For example,
-# {'a': 1,
-#  'c': {'a': 2,
-#        'b': {'x': 5,
-#              'y' : 10}},
-#  'd': [1, 2, 3]}
-# would turn into
-# {'a': 1,
-#  'c_a': 2,
-#  'c_b_x': 5,
-#  'c_b_y': 10,
-#  'd': [1, 2, 3]}
 def flatten_dict(dictionary):
     """
+    Given a nested dictionary, this function returns a flattened dictionary. Assume that the
+    keys will always be strings, but the values can be anything (ints, lists, etc.). For example,
+    {'a': 1,
+     'c': {'a': 2,
+           'b': {'x': 5,
+                 'y' : 10}},
+     'd': [1, 2, 3]}
+    would turn into
+    {'a': 1,
+     'c_a': 2,
+     'c_b_x': 5,
+     'c_b_y': 10,
+     'd': [1, 2, 3]}
 
-    :param dictionary:
-    :return:
+    :param dictionary: A dictionary
+    :rtype dictionary: Dict
+    :return: The flattened version of the input dictionary
+    :rtype: Dict
     """
     result_dict = dict()
     for key in dictionary:
@@ -102,11 +116,13 @@ def flatten_dict(dictionary):
 
 def __explore_dict(dictionary, result_dict, name):
     """
+    Helper function for flatten_dict
 
-    :param dictionary:
-    :param result_dict:
-    :param name:
-    :return:
+    :param dictionary: The dictionary to be flattened
+    :param result_dict: The flattened dictionary
+    :param name: The name of the key that is being appended to
+    :return: None
+    :rtype: None
     """
     if type(dictionary) != dict:
         result_dict[name] = dictionary
