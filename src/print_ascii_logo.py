@@ -58,7 +58,7 @@ if __name__ == "__main__":
         print()
 
 
-    description_dict = {"TaipeiMetroNavigator:": {"A": {"trip": {"planner": {"for": {"the": {"Taipei": {"Metro": {"System": None}}}}}}}}}
+    description_dict = {"TaipeiMetroNavigator:": {"A": {"trip": {"planner": {"for": {"the": {"Taipei": {"Metro": {"System\n": None}}}}}}}}}
 
     flattened_dict = utilities.flatten_dict(description_dict)
     message = list(flattened_dict.keys())[0]

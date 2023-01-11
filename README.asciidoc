@@ -26,15 +26,17 @@ https://web.metro.taipei/img/all/metrotaipeimap.jpg[official Taipei MRT website]
 == Architecture
 
 
-
 Notice that TaipeiMetroNavigator is completely Dockerized; all processes run inside a Docker
 container.
 
+The serialization format Cap'n Proto is also used here; refer to
+link:doc/serialization_formats.asciidoc[this page] for more information on serialization formats.
 
 == Installation
-[source, shell]
+[source, bash]
 ----
 git clone https://github.com/leeway64/TaipeiMetroNavigator.git
+cd TaipeiMetroNavigator
 ----
 
 == Usage
@@ -51,7 +53,7 @@ print_stats = true
 
 Next, build and run TaipeiMetroNavigator by executing the following two commands:
 
-[source, shell]
+[source, bash]
 ----
 $ sudo docker build -t taipeimetronavigator .
 $ sudo docker run taipeimetronavigator
@@ -101,7 +103,7 @@ $ sudo docker run taipeimetronavigator
 
 To list the containers and images, run:
 
-[source, shell]
+[source, bash]
 ----
 sudo docker image ls
 sudo docker container ls -a
@@ -112,7 +114,7 @@ sudo docker container ls -a
 
 If you wish to remove all containers and images, run:
 
-[source, shell]
+[source, bash]
 ----
 sudo docker container prune -f
 sudo docker image prune --force
@@ -121,7 +123,7 @@ sudo docker image prune --force
 
 == Running unit tests
 
-[source, shell]
+[source, bash]
 ----
 pytest --verbose --color=yes --full-trace
 ----

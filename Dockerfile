@@ -26,6 +26,8 @@ COPY --from=install /usr/local ./
 # Create the Python virtual environment and install the requirements
 RUN pacman -Sy --noconfirm python3
 RUN pacman -Sy --noconfirm python-pip
+# Need to install openssl, otherwise Python will complain that "the ssl module in Python is not available"
+RUN pacman -Sy --noconfirm openssl
 
 RUN python3 -m venv .venv
 RUN source .venv/bin/activate

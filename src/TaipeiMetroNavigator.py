@@ -45,7 +45,9 @@ if __name__ == "__main__":
     if print_stats:
         print("Taipei Metro statistics and information:")
         json_statistics = utilities.get_metro_statistics(metro_map["lines"])
-        print(json.dumps(json_statistics, indent=4))  # Pretty print the statistics as a JSON object
+        # Convert statistics to JSON, then back to a dictionary
+        statistics_dict = json.loads(json.dumps(json_statistics))
+        print(statistics_dict)
 
     if lines_to_print:
         if list(reversed(circular)) == [2020, 2019]:

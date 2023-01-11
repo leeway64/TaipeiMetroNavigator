@@ -82,8 +82,6 @@ def find_total_number_of_stations(lines):
     
     for line, stations in lines.items():
         data.at[0, "stations"] += len(stations)
-    print("dataframe")
-    print(data)
     return int(data.at[0, "stations"])
 
 
