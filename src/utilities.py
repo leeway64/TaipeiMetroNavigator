@@ -5,12 +5,12 @@ from lib import MetroStatistics
 
 def get_formatted_path(path) -> str:  # Type hinting
     """
-    Format the shortest path between 2 stations into a more easily readable form.
-    Insert "===" between station names.
+    Format a list of metro stations into a more easily readable form; insert "===" between station
+    names.
 
-    :param path: A list of station names, representing the shortest path between 2 stations
+    :param path: A list of station names
     :type path: List
-    :return: The shortest path between 2 stations, formatted into "station1 === station2 === station3 === ..."
+    :return: A list of metro stations, formatted into "station1 === station2 === station3 === ..."
     :rtype: str
     """
     formatted_path = f"{path[0]}"

@@ -32,6 +32,16 @@ container.
 The serialization format Cap'n Proto is also used here; refer to
 link:doc/serialization_formats.asciidoc[this page] for more information on serialization formats.
 
+To render the architecture diagram yourself, run the following commands:
+
+[source, bash]
+----
+python3 -m venv .venv
+source .venv/bin/activate
+sudo pip install blockdiag
+blockdiag
+----
+
 == Installation
 [source, bash]
 ----

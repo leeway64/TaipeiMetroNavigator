@@ -40,10 +40,8 @@ def find_shortest_path(graph: Dict[str, List[str]], src: str, dest: str):  # Typ
                 # reference. That means that writing previous_path = current_shortest_path means
                 # that previous_path still points to the current_shortest_path list.
                 previous_path = list(current_path)
-                # print(f"previous path: {previous_path}")
 
                 previous_path.append(neighbor)
-                # print(f"previous path after append: {previous_path}")
 
                 shortest_path.append(previous_path)
                 current_node.appendleft([neighbor, distance + 1])

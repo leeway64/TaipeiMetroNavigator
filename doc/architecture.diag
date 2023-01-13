@@ -1,0 +1,8 @@
+architecture {
+    // Label nodes
+    A [label = "Settings file (TOML)"];
+    B [label = "Cap'n Proto binary"];
+    C [label = "Dictionary-like object"];
+    D [label = Resulting text (path, lines, statistics, etc.) sent to standard output]
+    A -> B -> C -> D;
+}
