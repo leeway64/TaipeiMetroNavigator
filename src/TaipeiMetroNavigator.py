@@ -47,10 +47,12 @@ if __name__ == "__main__":
         json_statistics = utilities.get_metro_statistics(metro_map["lines"])
         # Convert statistics to JSON, then back to a dictionary
         statistics_dict = json.loads(json.dumps(json_statistics))
-        print(statistics_dict)
+        for key, value in statistics_dict.items():
+            print(f"\t{key}: {value}")
+        print()
 
     if lines_to_print:
         if list(reversed(circular)) == [2020, 2019]:
-            print("\tAdditional line information:")
+            print("Additional line information:")
             for line in lines_to_print:
-                print(f"\t\t{line} line:\n\t\t\t{metro_map['lines'][line]}")
+                print(f"\t{line} line:\n\t\t\t{metro_map['lines'][line]}")

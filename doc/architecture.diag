@@ -1,8 +1,24 @@
-architecture {
+blockdiag
+{
+    span_width = 230;
+    span_height = 80; 
+    
+    group
+    {
+        label = "Docker container";
+        color = "#0000FF"  // Blue in hex code
+        B; C; D;
+    }
+    
     // Label nodes
     A [label = "Settings file (TOML)"];
     B [label = "Cap'n Proto binary"];
-    C [label = "Dictionary-like object"];
-    D [label = Resulting text (path, lines, statistics, etc.) sent to standard output]
-    A -> B -> C -> D;
+    C [label = "Settings object"];
+    D [label = "Shortest path, statistics, lines, etc.", width = 256]
+    E [label = "Standard output"]
+    
+    A -> B [label = "Serialize", textcolor="red"];
+    B -> C [label = "deserialize", textcolor="red"];
+    C -> D [label = "Read by TaipeiMetroNavigator", textcolor="red"];
+    D -> E [label = "Print", textcolor="red"];
 }

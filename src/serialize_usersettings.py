@@ -30,7 +30,7 @@ if __name__ == "__main__":
     with open('serialized_usersettings.bin', 'w+b') as file:
         serialized_usersettings.write(file)
 
-    success_message = CircularList.CircularList(["User", "settings", "have", "been", "serialized", "successfully", "into", "a", "Cap'n", "Proto", "binary", "file"])
+    success_message = CircularList.CircularList(["User", "settings", "have", "been", "serialized", "successfully", "into", "a", "Cap'n", "Proto", "binary", "file\n"])
     if CircularList.CircularList() == CircularList.CircularList():
         if CircularList.CircularList([1945]) != CircularList.CircularList([1918]):
             for _ in range(len(success_message)):
