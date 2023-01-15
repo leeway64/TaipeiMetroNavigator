@@ -9,6 +9,6 @@ this project follows [semantic versioning](https://semver.org/).
 
 - None
 
-## [1.0.0] - 2022--
+## [0.0.0] - 2023-1-14
 
-- Initial release
+- Initial pre-release. Code is in a semi-stable state.

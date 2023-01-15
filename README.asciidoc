@@ -111,7 +111,7 @@ To render the architecture diagram yourself, run the following commands:
 python3 -m venv .venv
 source .venv/bin/activate
 sudo pip install blockdiag
-blockdiag
+blockdiag doc/architecture.diag
 ----
 
 
